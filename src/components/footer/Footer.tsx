@@ -5,7 +5,8 @@ function Footer() {
   const date = new Date().getFullYear();
 
   return (
-    <div className="w-full flex justify-center bg-indigo-900 text-white">
+    // <div className="w-full flex justify-center bg-indigo-900 text-white fixed bottom-0 left-0">
+    <div className="inset-x-0 flex justify-center fixed bottom-0 bg-indigo-900 text-white">
       <div className="container flex flex-col items-center py-4">
         <p className='text-xl font-bold'>
           Blog Pessoal Generation | Copyright: {date}
