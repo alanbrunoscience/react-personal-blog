@@ -23,8 +23,8 @@ function Navbar() {
           <nav>
             <ul className="flex text-center list-none">
               <li className="mr-4">Postagens</li>
-              <li className="mr-4">Temas</li>
-              <li className="mr-4">Cadastrar Tema</li>
+              <li className="mr-4"><Link to='/temas' className='hover:underline'>Temas</Link></li>
+              <li className="mr-4"><Link to='/cadastrartema' className='hover:underline'>Cadastrar tema</Link></li>
               <li className="mr-4">Perfil</li>
               <li className="mr-4"><Link to='' onClick={logout} className='hover:underline'>Sair</Link></li>
             </ul>
