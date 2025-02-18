@@ -22,8 +22,8 @@ function ListaTemas() {
         headers: { Authorization: token }
       })
 
-    } catch (error: any) {
-      if (error.toString().includes('401')) {
+    } catch (error: unknown) {
+      if (error instanceof Error && error.message.includes("401")) {
         handleLogout()
       }
     }
