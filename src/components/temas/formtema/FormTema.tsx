@@ -19,11 +19,9 @@ function FormTema() {
 
   async function buscarTemaPorId(id: string) {
     try {
-
       await buscar(`/temas/${id}`, setTema, {
         headers: { Authorization: token }
       })
-
     } catch (error: unknown) {
       if (error instanceof Error && error.message.includes("401")) {
         handleLogout()
@@ -38,9 +36,22 @@ function FormTema() {
     }
   }, [token])
 
+  /* IMPLEMENTAÇÂO EXTRA
+
+  * Caso o id esteja indefinido (undefined), para garantir ao criar um novo tema
+  * o estado tema esteja vazio, executamos a função setTema() para redefinir o 
+  * estado tema 
+  
+  */
+
   useEffect(() => {
     if (id !== undefined) {
       buscarTemaPorId(id)
+    } else {
+      setTema({
+        id: 0,
+        descricao: "",
+      })
     }
   }, [id])
 

@@ -42,7 +42,7 @@ function ListaTemas() {
 
   return (
     <>
-      {temas.length === 0 && (
+      {temas.length === undefined && (
         <DNA
           visible={true}
           height="200"
@@ -53,13 +53,26 @@ function ListaTemas() {
         />
       )}
       <div className="flex justify-center w-full my-4">
-        <div className="container flex flex-col">
+        <div className="container flex flex-col mx-2">
+          {/* 
+						**IMPLEMENTAÇÃO EXTRA**
+
+						Se o Recurso Tema estiver vazio, ou seja, não possuir nenhum
+						tema cadastrado, será exibida a mensagem abaixo
+					*/}
+          {temas.length === 0 && (
+            <span className="text-3xl text-center my-8">
+              Nenhum Tema foi encontrado!
+            </span>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-2 
                                     lg:grid-cols-3 gap-8">
             {
-              temas.map((tema) => (
-                <CardTemas key={tema.id} tema={tema} />
-              ))
+              temas
+                .sort((a, b) => a.id - b.id)
+                .map((tema) => (
+                  <CardTemas key={tema.id} tema={tema} />
+                ))
             }
           </div>
         </div>
