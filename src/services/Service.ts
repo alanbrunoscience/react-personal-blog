@@ -24,7 +24,7 @@ import axios from 'axios';
 
 const api = axios.create({
     // baseURL: "http://localhost:4000",
-    baseURL: "https://nest-personal-blog.onrender.com",
+    baseURL: import.meta.env.VITE_API_URL,
 });
 
 /*
