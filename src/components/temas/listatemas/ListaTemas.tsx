@@ -5,6 +5,7 @@ import Tema from "../../../models/Tema"
 import CardTemas from "../cardtemas/CardTemas"
 import { buscar } from "../../../services/Service"
 import { DNA } from "react-loader-spinner"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function ListaTemas() {
 
@@ -16,10 +17,10 @@ function ListaTemas() {
    * inicializados com o valor vazio ou zero, de acordo com as respectivas
    * tipagens de cada atributo.
    * 
-   * Para modificar o valor do estado, foi criada a função setUsuario,
+   * Para modificar o valor do estado, foi criada a função setTemas,
    * seguindo a sintaxe básica do Hook useState.
    *
-   * O objetivo do estado usuario é armazenar os dados de todos os temas,
+   * O objetivo do estado temas é armazenar os dados de todos os temas,
    * que foram persistidos no Backend. Observe que temas foi definido como
    * um Array.
    */
@@ -71,8 +72,9 @@ function ListaTemas() {
      * - A URL do endpoint de cadastro ('/temas'), definida no recurso Tema do Backend;
      * - A função setTema, que será utilizada para atualizar o Estado temas,
      *   com os dados recebidos na Resposta da Requisição HTTP.
-     * - O token JWT, que da mesma forma que fazíamos no Insomnia, será enviado dentro
-     *   do cabeçalho da requisição (headers), na propriedade Authorization
+     * - O token JWT, que da mesma forma que fazíamos no Insomnia, será 
+     * enviado dentro do cabeçalho da requisição (headers), na propriedade 
+     * Authorization
      */
     try {
 
@@ -101,7 +103,7 @@ function ListaTemas() {
    */
   useEffect(() => {
     if (token === '') {
-      alert('Você precisa estar logado!')
+      ToastAlerta('Você precisa estar logado!', 'info')
       navigate('/')
     }
   }, [token])
@@ -110,7 +112,7 @@ function ListaTemas() {
    * O segundo Hook useEffect, que será executado sempre que houver
    * uma mudança no tamanho (numero de elementos armazenados) do estado temas.
    *
-   * Todas as vezes que ocorrer uma mudança no tamanho do estado usuario,
+   * Todas as vezes que ocorrer uma mudança no tamanho do estado temas,
    * a função buscarTemas() será executada para atualizar a listagem de temas.
    */
   useEffect(() => {
