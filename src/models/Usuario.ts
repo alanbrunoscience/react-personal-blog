@@ -6,5 +6,5 @@ export default interface Usuario {
     usuario: string;
     senha: string;
     foto: string;
-    postagens?: Postagem | null;
+    postagens?: Postagem | null; // "?": indica que o preenchimento dos dados deste atributo é opcional.
 }
